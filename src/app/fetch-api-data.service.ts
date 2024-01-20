@@ -147,6 +147,7 @@ export class UserRegistrationService {
 })
 export class FetchApiDataService {
   public isTesting = false;
+  private apiUrl = 'https://primemovies-39075872fbeb.herokuapp.com';
 
   constructor(private http: HttpClient) {}
 
