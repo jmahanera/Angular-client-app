@@ -7,7 +7,7 @@
             [(ngModel)]="searchText"
             (ngModelChange)="sendMessage()"
             placeholder="Search..."
-            style="margin-right: 10px; height: 50%; background-color: rgba(50,75,125,.5); color: white;"
+            style="margin-right: 10px; height: 50%; background-color: rgba(50,75,125,.5); color: rgb(248, 245, 245);"
             *ngIf="hasUser()"
         />
         <button
@@ -36,6 +36,7 @@
             (click)="navSignout()"
             style="margin-right: 10px;"
             color="primary"
+            *ngIf="hasUser()"
 
         >
             Signout
