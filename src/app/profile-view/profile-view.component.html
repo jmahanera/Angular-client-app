@@ -1,5 +1,17 @@
 <app-nav-bar></app-nav-bar>
 
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Your Page Title</title>
+
+</head>
+
+
+
     <div class="profile-page">
         <div class="profile-container">
             <div class="info-container">
@@ -14,7 +26,7 @@
                     </div>
                     <mat-list>
                         <mat-list-item *ngFor="let movie of FavoriteMovies">
-                            <img matListItemAvatar src="{{ movie.imageUrl }}" />
+                            <img matListItemAvatar src="{{ movie.imageURL }}" />
                             <span matListItemTitle>{{ movie.Title }}</span>
                         </mat-list-item>
                     </mat-list>
@@ -58,4 +70,4 @@
     </div>
 
 
-
+</html>

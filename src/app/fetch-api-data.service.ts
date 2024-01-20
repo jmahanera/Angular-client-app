@@ -9,7 +9,7 @@ import { Observable, of } from 'rxjs';
 import mockdata from './mockdata';
 import { DataService } from './data.service';
 
-const apiUrl = 'https://primemovies-39075872fbeb.herokuapp.com/';
+const apiUrl = 'https://primemovies-39075872fbeb.herokuapp.com';
 
 @Injectable({
   providedIn: 'root',
@@ -26,7 +26,7 @@ export class UserRegistrationService {
 
   public editUser(user: any): Observable<any> {
     const userDetails = user.id;
-    const apiUrl = `https://primemovies-39075872fbeb.herokuapp.com/users/${user}`;
+    const apiUrl = `https://primemovies-39075872fbeb.herokuapp.com/user`;
 
     return this.http
       .put(apiUrl, userDetails, { headers: this.tokenHeader() })
@@ -43,7 +43,7 @@ export class UserRegistrationService {
   public userRegistration(userDetails: any): Observable<any> {
     console.log(userDetails);
     return this.http
-      .post(apiUrl + '/users', userDetails)
+      .post(apiUrl + 'users', userDetails)
       .pipe(catchError(this.handleError));
   }
 
@@ -147,6 +147,8 @@ export class UserRegistrationService {
 })
 export class FetchApiDataService {
   public isTesting = false;
+  private apiUrl =
+    'https://primemovies-39075872fbeb.herokuapp.com/users/users/';
 
   constructor(private http: HttpClient) {}
 
