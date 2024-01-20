@@ -1,0 +1,41 @@
+
+
+.card-container {
+    display: flex;
+    background: grey;
+    color: white;
+    flex-wrap: nowrap;
+}
+
+.movie-card {
+    //flex: 1 0 auto;
+    margin: 10px 10px;
+    background: rgba(50,75,125,.5);
+    border: 5px blue($color: #000000);
+    max-width: 25vw;
+    max-height: 80vh;
+
+}
+
+.movie-card img {
+    max-width: 30vw;
+    margin: auto 5px;
+    border: darkgrey 5px solid;
+    cursor: pointer;
+    transform: scale(1.0);
+    transition: transform 0.5s ease-in-out, border 0.5s ease-in-out;
+}
+
+.movie-card img:hover {
+    transform: scale(1.02);
+    border: rgba(0,0,0,.8) 5px solid;
+}
+
+.button-bar {
+    background-image: linear-gradient(to left, rgba(0,0,0,.7), rgba(0,0,0,1));
+}
+
+.button-bar mat-icon {
+    border: rgba(50,75,125,.1) 2px solid;
+    font-size: .8;
+}

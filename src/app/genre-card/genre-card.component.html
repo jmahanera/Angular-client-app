@@ -1,0 +1,51 @@
+<mat-card class = "card-container">
+    <mat-card-header style = "justify-content: center; align-items: center; text-align: center;">
+        <mat-card-title >
+            <h1>
+                {{genre.name}}
+            </h1>
+        </mat-card-title>
+    </mat-card-header>
+
+    <mat-card-content class = "content-row">
+        
+        <div class="info-container">
+            <h2>
+                Genre Name:
+            </h2>
+            <p>
+                {{genre.name}}
+            </p>
+
+        </div>
+    </mat-card-content>
+
+    <mat-card-content>
+        <h2  class="similar-movies-text">
+            Similar Movies:
+        </h2>
+        <div class = "similar-card-container">
+            <mat-card *ngFor="let movie of similarMovies; let i=index" class="similar-card">
+                <div class="similar-image-container">
+                    <img
+                        class="similar-movie-image"
+                        src={{movie.imageUrl}}
+                        (click)="openMovieCardDialog(movie)"
+                    />
+                </div>
+                <mat-card-header style="margin: 0 auto">
+                    <mat-card-title
+                        style = "
+                            font-size: 1em;
+                            white-space: nowrap;
+                            overflow: hidden;
+                        "
+                    >
+                        {{movie.title}}
+                    </mat-card-title>
+                </mat-card-header>
+            </mat-card>
+        </div>
+    </mat-card-content>
+
+</mat-card>
