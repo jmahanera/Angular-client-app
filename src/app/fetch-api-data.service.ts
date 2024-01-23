@@ -9,7 +9,7 @@ import { Observable, of } from 'rxjs';
 import mockdata from './mockdata';
 import { DataService } from './data.service';
 
-const apiUrl = 'https://primemovies-39075872fbeb.herokuapp.com';
+const apiUrl = 'https://primemovies-39075872fbeb.herokuapp.com/';
 
 @Injectable({
   providedIn: 'root',
@@ -26,7 +26,7 @@ export class UserRegistrationService {
 
   public editUser(user: any): Observable<any> {
     const userDetails = user.id;
-    const apiUrl = `https://primemovies-39075872fbeb.herokuapp.com/user`;
+    const apiUrl = `https://primemovies-39075872fbeb.herokuapp.com/users/${user}`;
 
     return this.http
       .put(apiUrl, userDetails, { headers: this.tokenHeader() })
@@ -43,7 +43,7 @@ export class UserRegistrationService {
   public userRegistration(userDetails: any): Observable<any> {
     console.log(userDetails);
     return this.http
-      .post(apiUrl + 'users', userDetails)
+      .post(apiUrl + '/users', userDetails)
       .pipe(catchError(this.handleError));
   }
 
@@ -147,8 +147,6 @@ export class UserRegistrationService {
 })
 export class FetchApiDataService {
   public isTesting = false;
-  private apiUrl =
-    'https://primemovies-39075872fbeb.herokuapp.com/users/users/';
 
   constructor(private http: HttpClient) {}
 
@@ -206,13 +204,6 @@ export class FetchApiDataService {
   private extractResponseData(res: any): any {
     const body = res;
     return body || {};
-  }
-
-  private handleError(error: HttpErrorResponse): any {
-    if (error.error instanceof ErrorEvent) {
-      console.error('An error has occurred: ', error.error.message);
-    } else {
-    }
   }
 
   public getMovie(movieID: string): Observable<any> {
@@ -277,5 +268,18 @@ export class FetchApiDataService {
         }
       )
       .pipe(map(this.extractResponseData), catchError(this.handleError));
+  }
+
+  private handleError(error: HttpErrorResponse): any {
+    if (error.error instanceof ErrorEvent) {
+      console.error('An error has occurred: ', error.error.message);
+    } else {
+      console.error(
+        `Error Status Code:\n    ${error.status},\n` +
+          `Error body is: \n    ${error.error}`
+      );
+    }
+    // You need to return something here, like an Observable with an error message.
+    return of(''); // Placeholder, replace it with appropriate handling.
   }
 }

@@ -39,6 +39,7 @@ export class UserRegistrationFormComponent {
    * Closes the dialog on success and displays a success message. Shows an error message on failure.
    */
   registerUser(): void {
+    console.log('Registering user:', this.user);
     this.userRegistrationAPI.userRegistration(this.user).subscribe(
       () => {
         this.dialogRef.close();
